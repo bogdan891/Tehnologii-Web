@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = () => {
+            const button = document.getElementById("mybtn");
+            
+            const custom = new CustomEvent("butonApasat", {
+                detail: {message: "Eveniment declansat!"}
+            });
+
+            button.addEventListener("click", () => {
+                console.log("Butonul a fost apasat!");
+                button.dispatchEvent(custom);
+            });
+
+            button.addEventListener("butonApasat", (e) => {
+                console.log(e.detail.message);
+                alert("Eveniment custom: " + e.detail.message);
+            });
+        };
+    </script>
+</head>
+<body>
+    <button id="mybtn">Click me!</button>
+</body>
+</html>
